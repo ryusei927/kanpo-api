@@ -1,6 +1,12 @@
+import sys
+import os
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List
+
+# `kanpo.py` のパスを明示的に追加
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 from kanpo import normalized_kampo_data  # `kanpo.py` からデータをインポート
 
 app = FastAPI(root_path="/")  # root_path を設定
