@@ -2,7 +2,8 @@ from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List
 
-app = FastAPI()
+app = FastAPI(root_path="/")
+
 
 # CORS設定（フロントエンドと通信するために必要）
 app.add_middleware(
