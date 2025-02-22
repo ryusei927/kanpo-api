@@ -35,3 +35,7 @@ def search_kampo(numbers: List[str] = Query([])):
                 result[ingredient] = result.get(ingredient, 0) + amount
 
     return {"total_ingredients": result}
+
+@app.get("/")
+def read_root():
+    return {"message": "漢方APIが正常に動作しています！"}
