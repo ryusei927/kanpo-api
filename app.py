@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List
+from kanpo import normalized_kampo_data  # `kanpo.py` からデータをインポート
 
 app = FastAPI(root_path="/")  # root_path を設定
 
@@ -12,16 +13,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-# 漢方データ（仮のデータ）
-kampo_data = {
-    "001": {"葛根": 3, "生姜": 2, "甘草": 1},
-    "002": {"葛根": 2, "麻黄": 4, "甘草": 1},
-    "003": {"桂枝": 3, "芍薬": 2, "甘草": 1}
-}
-
-# キーを整数化（"001" → "1" に変換）
-normalized_kampo_data = {str(int(k)): v for k, v in kampo_data.items()}
 
 @app.get("/")
 def read_root():
